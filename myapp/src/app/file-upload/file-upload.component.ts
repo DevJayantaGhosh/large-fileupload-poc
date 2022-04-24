@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { FileDTO } from '../file-dto';
 import { FileuploadService } from '../fileupload.service';
 import { Fileuploadrequest } from '../fileuploadrequest';
 
@@ -66,5 +67,35 @@ onClick() {
     });
 
 }
+
+
+
+
+fileDTO:FileDTO=new FileDTO();
+onFileSelectionwithDTO(e){
+
+    this.fileDTO=null;
+    this.fileDTO.file= e.target.files[0];
+    this.fileDTO.specialA="SpAAA";
+    this.fileDTO.specialBNumber=789;
+    this.fileDTO.specialCArr=['don','is','here'];
+
+  }
+
+  onClickForDTO(){
+
+  
+   // formData.append("other",req.otherInfo);
+    this.fileUploadService.uploadDTO(this.fileDTO).subscribe(
+      rsp => {
+        console.log(rsp.type)
+  
+  
+       
+  },
+      error => {
+        console.log(error)
+      });
+  }
 
 }

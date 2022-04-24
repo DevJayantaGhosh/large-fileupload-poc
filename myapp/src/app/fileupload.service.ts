@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { FileDTO } from './file-dto';
 import { Fileuploadrequest } from './fileuploadrequest';
 
 @Injectable({
@@ -28,6 +29,16 @@ export class FileuploadService {
     console.log("upload service function is called")
     console.log("Data going ",formData)
     return this.http.post<FormData>(this.SERVER_URL, formData, {  
+        reportProgress: true,  
+        observe: 'events'  
+      });  
+  }
+
+  SERVER_URL_DTO: string = "http://localhost:8080/fileUpload/upload-dto";  
+  public uploadDTO(fileDTO:FileDTO) {
+    console.log("upload service function is called")
+    console.log("Data going ",fileDTO)
+    return this.http.post<FileDTO>(this.SERVER_URL_DTO, fileDTO, {  
         reportProgress: true,  
         observe: 'events'  
       });  

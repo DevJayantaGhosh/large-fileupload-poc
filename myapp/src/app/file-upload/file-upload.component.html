@@ -1,7 +1,4 @@
-<div>
- 
-     
-   
+<div> 
 <input type="file" #fileUpload id="fileUpload" name="fileUpload" multiple="multiple"  (change)="onFileSelection($event)"   />
 
 <button (click)="onClick()">  
@@ -9,4 +6,14 @@
     Upload  
 </button>  
 </div>
+<hr>
 
+==============================
+<div> 
+    <input type="file" #fileUpload id="fileUpload" name="fileUpload" multiple="multiple"  (change)="onFileSelectionwithDTO($event)"   />
+    
+    <button (click)="onClickForDTO()">  
+               
+        Upload  
+    </button>  
+</div>
