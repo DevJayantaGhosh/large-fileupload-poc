@@ -65,10 +65,10 @@ export class LargeProcessing {
     }
 
 }
+//initiateDataProcess-----> startChunking    waiting for return this.subject.asObservable();
+//  startChunking---->uploadData  then uploadData--->startChunking
+//  if last call ->   uploadLastData---> subject.next()
 
-// startChunking---->uploadData  then uploadData--->startChunking
-// if last call ->   uploadLastData---> subject.next()
-
-//A--------------------------------------======================================================->B
-//this.largeProcess=new LargeProcessing();//that object of main process class       |
-//this.mydataInfo=new DataInfo();//the object which yo want to pass                 |           private subject:BehaviorSubject<boolean>=new BehaviorSubject(false);
+// A--------------------------------------======================================================->B
+// this.largeProcess=new LargeProcessing();//that object of main process class       |
+// this.mydataInfo=new DataInfo();//the object which yo want to pass                 |           private subject:BehaviorSubject<boolean>=new BehaviorSubject(false);
