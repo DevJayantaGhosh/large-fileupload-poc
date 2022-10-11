@@ -19,7 +19,7 @@ export class LargeProcessing {
         this.LargeDataForProcess.dataInfo=dataInfo;
     }
 
-    private subject:BehaviorSubject<boolean>=new BehaviorSubject(false);//need new as it pass data to other
+    private subject:BehaviorSubject<boolean>=new BehaviorSubject(false);//  need new as it pass data to other
 
     initiateDataProcess():Observable<boolean>{
       console.log("Initiate Process--------------------")
@@ -32,11 +32,11 @@ export class LargeProcessing {
             let dataAr= this.LargeDataForProcess.dataInfo.dataArr;
                 if(dataAr.length>this.LargeDataForProcess.chunkSize){
                     let chunk=dataAr.splice(0,this.LargeDataForProcess.chunkSize);
-                    alert(JSON.stringify(chunk))
+                    //alert(JSON.stringify(chunk))
                     this.uploadData(chunk);
                 }else{
                     let chunk=dataAr.splice(0,this.LargeDataForProcess.chunkSize);
-                    alert(JSON.stringify(chunk))
+                    //alert(JSON.stringify(chunk))
                    // let chunk=dataAr.splice(this.LargeDataForProcess.dataInfo.processedData-1,this.LargeDataForProcess.dataInfo.processedData+remaining);
                     this.uploadLastData(chunk);
                     return;
@@ -66,5 +66,9 @@ export class LargeProcessing {
 
 }
 
-//startChunking---->uploadData  then uploadData--->startChunking
-//if last call ->   uploadLastData---> subject.next()
+// startChunking---->uploadData  then uploadData--->startChunking
+// if last call ->   uploadLastData---> subject.next()
+
+//A--------------------------------------======================================================->B
+//this.largeProcess=new LargeProcessing();//that object of main process class       |
+//this.mydataInfo=new DataInfo();//the object which yo want to pass                 |           private subject:BehaviorSubject<boolean>=new BehaviorSubject(false);
