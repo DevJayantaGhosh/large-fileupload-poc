@@ -11,6 +11,14 @@ export class AppComponent {
   title = 'myapp';
 
 
+
+  genericFunction(parameter1:string, parameter2:string,ptr:any,calbackFn:any){
+    console.log("parameter1 passed here is ---"+parameter1);
+    console.log("parameter1 passed here is ---"+parameter1);
+    calbackFn(ptr);
+  }
+
+
 //   constructor(private fileService:FileuploadService){
 
 //   }

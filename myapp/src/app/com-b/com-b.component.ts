@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-com-b',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ComBComponent implements OnInit {
 
-  constructor() { }
+  constructor(private app :AppComponent) { }
 
   ngOnInit(): void {
   }
 
+  
+  TriggerGenericFromB(){
+    this.app.genericFunction("BBBB","BBBBBBBaaaaaa",this,this.callBackfromB);
+    }
+  
+    callBackfromB(ptr){//ptr is needed if you want to access any obj of this class
+      console.log("callBackfromB-------");
+      console.log("yyyyyyyyyBBBBBBBBB");
+    }
 }

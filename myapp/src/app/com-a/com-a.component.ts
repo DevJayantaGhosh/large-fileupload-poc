@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { AppComponent } from '../app.component';
 import { LargeProcessing } from '../common/large-processing';
 import { DataInfo } from '../model/model-store';
 
@@ -15,7 +16,7 @@ export class ComAComponent implements OnInit {
   largeProcess: LargeProcessing;//new new
   subscription:Observable<boolean>;
 
-  constructor() { }
+  constructor(private app:AppComponent) { }
 
   ngOnInit(): void {
     this.largeProcess=new LargeProcessing();//that object of main process class
@@ -40,5 +41,14 @@ export class ComAComponent implements OnInit {
 
   }
 
+
+  TriggerGenericFromA(){
+  this.app.genericFunction("aa","aaaaaa",this,this.callBackfromA);
+  }
+
+  callBackfromA(ptr){//ptr is needed if you want to access any obj of this class
+    console.log("callBackfromA--------");
+    console.log(JSON.stringify(ptr.mydataInfo));
+  }
 
 }
